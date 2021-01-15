@@ -13,7 +13,6 @@ import java.util.List;
 public class Tile {
 
     @NotNull
-    @NotBlank
     @Getter
     @Setter
     @EmbeddedId
@@ -21,17 +20,19 @@ public class Tile {
 
     @NotBlank
     @NotNull
+    @Getter
+    @Setter
     String tileType;
 
-    @NotBlank
-    @NotNull
     @ElementCollection
-    List<String> ContentList;
+    @Getter
+    @Setter
+    List<String> contentList;
 
-    public Tile(TileId tileId, String tileType, List<String> contentList) {
+    public Tile(TileId tileId, @NotBlank String tileType, List<String> contentList) {
         this.tileId = tileId;
         this.tileType = tileType;
-        ContentList = contentList;
+        this.contentList = contentList;
     }
 
     public Tile() {

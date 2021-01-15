@@ -19,8 +19,7 @@ public class TileController {
     @GetMapping(path = "/api/getTileByCoordinates/{coordinates_x},{coordinates_y}", produces = "application/json")
     public Object getTileByCoordinates(@PathVariable int coordinates_x, @PathVariable int coordinates_y){
         if (tileRepository.existsById(new TileId(coordinates_x,coordinates_y))){
-            Tile tile = tileRepository.findById(new TileId(coordinates_x,coordinates_y)).orElseThrow();
-            return tile;
+            return tileRepository.findById(new TileId(coordinates_x,coordinates_y)).orElseThrow();
         }else{
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
