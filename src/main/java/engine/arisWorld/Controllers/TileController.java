@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.util.ArrayList;
 
@@ -45,6 +46,13 @@ public class TileController {
             }
         }
         return tiles;
+    }
+
+    @Transactional
+    @PostMapping(path = "/api/massMapUpdate", consumes = "application/json")
+    public Object massMapUpdate (@Valid @RequestBody ArrayList<Tile> tiles){
+        tileRepository.saveAll(tiles);
+        return new ResponseEntity(HttpStatus.OK);
     }
 
 }
