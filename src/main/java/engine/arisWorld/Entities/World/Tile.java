@@ -1,7 +1,6 @@
 package engine.arisWorld.Entities.World;
 
 import com.sun.istack.NotNull;
-import engine.arisWorld.Entities.Items.Item;
 import lombok.Getter;
 import lombok.Setter;
 
